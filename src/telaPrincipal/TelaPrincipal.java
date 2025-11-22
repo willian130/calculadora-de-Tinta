@@ -243,10 +243,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
    
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
+        
+        // 1. CALCULAR PAREDES
+        double altParede = Double.parseDouble(ParedeAltura.getText().replace(",", "."));
+        double largParede = Double.parseDouble(ParedeLargura.getText().replace(",", "."));
+        double areaParedes = altParede * largParede;
+        
+        // 2. CALCULAR TETO (Se os campos não estiverem vazios)
+        double areaTeto = 0.0;
+        if (!Teto_compri.getText().isEmpty() && !Teto_Larg.getText().isEmpty()) {
+            double compTeto = Double.parseDouble(Teto_compri.getText().replace(",", "."));
+            double largTeto = Double.parseDouble(Teto_Larg.getText().replace(",", "."));
+            areaTeto = compTeto * largTeto;
+        }
+        
+         // 3. CALCULAR ÁREA SEM PINTAR (Portas/Janelas)
+        double areaSemPintar = 0.0;
+        if (!Area_Alt.getText().isEmpty() && !Area_larg.getText().isEmpty()) {
+            double altSem = Double.parseDouble(Area_Alt.getText().replace(",", "."));
+            double largSem = Double.parseDouble(Area_larg.getText().replace(",", "."));
+            areaSemPintar = altSem * largSem;
+        }
+        
+        // 4. CÁLCULO FINAL DA ÁREA TOTAL
+        // Soma paredes e teto, e subtrai o que não vai pintar
+        double areaTotalPintavel = (areaParedes + areaTeto) - areaSemPintar;
+        
         Tela2 novaTela = new Tela2();
+        novaTela.mostrarAreaTotal(areaTotalPintavel);
         novaTela.setLocation(this.getLocation());
         novaTela.setVisible(true);
-     
+        
+        
         
         this.dispose();
     }//GEN-LAST:event_CalcularActionPerformed

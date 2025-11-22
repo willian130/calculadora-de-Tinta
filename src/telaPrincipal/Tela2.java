@@ -96,6 +96,12 @@ public class Tela2 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    public void mostrarAreaTotal(double areaCalculada) {
+    // "jTextField1" é o nome do campo que o NetBeans criou para a Área Total
+    // String.format("%.2f", ...) serve para deixar com 2 casas decimais (ex: 45.50)
+    jTextField1.setText(String.format("%.2f m²", areaCalculada));
+}
+    
     private void QuantLitrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantLitrosActionPerformed
         
     }//GEN-LAST:event_QuantLitrosActionPerformed
