@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package telaPrincipal;
 
 
@@ -9,9 +6,6 @@ public class Tela2 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Tela2.class.getName());
 
-    /**
-     * Creates new form Tela2
-     */
     public Tela2() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -73,6 +67,12 @@ public class Tela2 extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Quantidade de latas");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, -1, -1));
+
+        QuantLatas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                QuantLatasActionPerformed(evt);
+            }
+        });
         getContentPane().add(QuantLatas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 290, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -84,21 +84,25 @@ public class Tela2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rreturnActionPerformed
-       TelaPrincipal novaTelaP = new TelaPrincipal();
+       telaInicial inicial = new telaInicial();
     
-    novaTelaP.setLocation(this.getLocation());
-    novaTelaP.setVisible(true);
+    inicial.setLocation(this.getLocation());
+    inicial.setVisible(true);
     
     this.dispose();
     }//GEN-LAST:event_rreturnActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void QuantLitrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantLitrosActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_QuantLitrosActionPerformed
+
+    private void QuantLatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantLatasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_QuantLatasActionPerformed
 
     /**
      * @param args the command line arguments

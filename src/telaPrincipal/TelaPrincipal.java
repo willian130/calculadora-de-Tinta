@@ -7,6 +7,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal.class.getName());
     private double alturaParede = 0.0;
     private double paredeLargura = 0.0;
+    private double tetoCompri = 0.0;
+    private double tetoLargura = 0.0;
+    
     
     public TelaPrincipal() {
         initComponents();
@@ -125,10 +128,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(Area_Alt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 164, -1));
 
-        jLabel6.setText("Comprimento");
+        jLabel6.setText("Comprimento(Opicional)");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
-        jLabel7.setText("Largura");
+        jLabel7.setText("Largura(Opicional)");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 190, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -190,7 +193,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String alturaEmTexto = ParedeAltura.getText();
             alturaEmTexto = alturaEmTexto.replace(",", ".");
             this.alturaParede = Double.parseDouble(alturaEmTexto);
-            System.out.println("Altura armazenada: " + this.alturaParede);
+            System.out.println("Perede Altura armazenada: " + this.alturaParede);
+             ParedeLargura.requestFocus();
         } catch (NumberFormatException e) {
             // galerinha, o catch evita que o user digite um numero invalido
             javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números na altura!");
@@ -198,25 +202,51 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ParedeAlturaActionPerformed
 
     private void Area_largActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Area_largActionPerformed
-        
+        ValorTinta.requestFocus();
     }//GEN-LAST:event_Area_largActionPerformed
 
     private void Area_AltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Area_AltActionPerformed
-        // TODO add your handling code here:
+     Area_larg.requestFocus();
     }//GEN-LAST:event_Area_AltActionPerformed
 
     private void Teto_compriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Teto_compriActionPerformed
-        // TODO add your handling code here:
+        try {
+            String TetoComprimentoEmTexto = Teto_compri.getText();
+            TetoComprimentoEmTexto = TetoComprimentoEmTexto.replace(",", ".");
+           
+            this.tetoCompri = Double.parseDouble(TetoComprimentoEmTexto);
+            
+            // serve pra diagnosticar se a largura foi armazenada, fellas
+            System.out.println("Teto Comprimento armazenada: " + this.tetoCompri);
+            Teto_Larg.requestFocus();
+        } catch (NumberFormatException e) {
+            // galerinha, o catch evita que o user digite um numero invalido
+            javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números na Comprimento!");
+        }
     }//GEN-LAST:event_Teto_compriActionPerformed
 
     private void Teto_LargActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Teto_LargActionPerformed
-        // TODO add your handling code here:
+        try {
+            String larguraEmTexto = Teto_Larg.getText();
+            larguraEmTexto = larguraEmTexto.replace(",", ".");
+            this.tetoLargura = Double.parseDouble(larguraEmTexto);
+            
+            // serve pra diagnosticar se a largura foi armazenada, fellas
+            System.out.println("Teto Largura armazenada: " + this.tetoLargura);
+            
+            Area_Alt.requestFocus();
+        } catch (NumberFormatException e) {
+            // galerinha, o catch evita que o user digite um numero invalido
+            javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números na Largura!");
+        }
     }//GEN-LAST:event_Teto_LargActionPerformed
 
+   
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
         Tela2 novaTela = new Tela2();
         novaTela.setLocation(this.getLocation());
         novaTela.setVisible(true);
+     
         
         this.dispose();
     }//GEN-LAST:event_CalcularActionPerformed
@@ -228,7 +258,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             this.paredeLargura = Double.parseDouble(larguraEmTexto);
             
             // serve pra diagnosticar se a largura foi armazenada, fellas
-            System.out.println("Largura armazenada: " + this.paredeLargura);
+            System.out.println("Perede Largura armazenada: " + this.paredeLargura);
+            Teto_compri.requestFocus();
         } catch (NumberFormatException e) {
             // galerinha, o catch evita que o user digite um numero invalido
             javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números na Largura!");
@@ -236,11 +267,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ParedeLarguraActionPerformed
 
     private void RendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RendimentoActionPerformed
-        // TODO add your handling code here:
+       Calcular.requestFocus();
     }//GEN-LAST:event_RendimentoActionPerformed
 
     private void ValorTintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValorTintaActionPerformed
-        // TODO add your handling code here:
+        Rendimento.requestFocus();
     }//GEN-LAST:event_ValorTintaActionPerformed
 
     /**
