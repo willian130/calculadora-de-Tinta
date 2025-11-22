@@ -9,6 +9,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private double paredeLargura = 0.0;
     private double tetoCompri = 0.0;
     private double tetoLargura = 0.0;
+    private double rendimento = 0.0;
+    private double precoTinta = 0.0;
     
     
     public TelaPrincipal() {
@@ -128,10 +130,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(Area_Alt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 164, -1));
 
-        jLabel6.setText("Comprimento(Opicional)");
+        jLabel6.setText("Comprimento(Opcional)");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
-        jLabel7.setText("Largura(Opicional)");
+        jLabel7.setText("Largura(Opcional)");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 190, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -295,10 +297,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ParedeLarguraActionPerformed
 
     private void RendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RendimentoActionPerformed
-       Calcular.requestFocus();
+       
+        try {
+            String rendimentoEmTexto = Rendimento.getText();
+            rendimentoEmTexto = rendimentoEmTexto.replace(",", ".");
+            this.rendimento = Double.parseDouble(rendimentoEmTexto);
+            System.out.println("Rendimento Armazendo: " + this.rendimento);
+             Rendimento.requestFocus();
+        } catch (NumberFormatException e) {
+            // galerinha, o catch evita que o user digite um numero invalido
+            javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números no Rendimento!");
+        }
+        
+        
+        Calcular.requestFocus();
     }//GEN-LAST:event_RendimentoActionPerformed
 
     private void ValorTintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValorTintaActionPerformed
+        
+        try {
+            String precoEmTexto = ValorTinta.getText();
+            precoEmTexto = precoEmTexto.replace(",", ".");
+            this.precoTinta = Double.parseDouble(precoEmTexto);
+            System.out.println("Valor armazenado: " + this.precoTinta);
+             ValorTinta.requestFocus();
+        } catch (NumberFormatException e) {
+            // galerinha, o catch evita que o user digite um numero invalido
+            javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números no Preço!");
+        }
+        
+        
         Rendimento.requestFocus();
     }//GEN-LAST:event_ValorTintaActionPerformed
 
