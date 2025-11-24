@@ -38,7 +38,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         titulo1 = new javax.swing.JLabel();
         superficie = new javax.swing.JLabel();
@@ -182,7 +181,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Preço da Tinta");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
 
-        jLabel11.setText("Quantidade de L");
+        jLabel11.setText("Quantidade de Litros");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 340, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 18L", "Lata 3,6L", "Lata 900L" }));
