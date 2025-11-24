@@ -142,7 +142,7 @@ public class Tela2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rreturnActionPerformed
-       telaInicial inicial = new telaInicial();
+       TelaPrincipal inicial = new TelaPrincipal();
     
     inicial.setLocation(this.getLocation());
     inicial.setVisible(true);

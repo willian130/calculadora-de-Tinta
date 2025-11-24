@@ -29,7 +29,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int x = (screenSize.width - windowWidth) / 2;
         int y = (screenSize.height - windowHeight) / 2;
         
-        // 4. Move a janela para lá
+        //4. Move a janela para lá
         this.setLocation(x, y);
     
  
@@ -38,8 +38,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLayeredPane1 = new javax.swing.JLayeredPane();
         titulo1 = new javax.swing.JLabel();
         superficie = new javax.swing.JLabel();
         ParedeAltura = new javax.swing.JTextField();
@@ -61,17 +61,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         ValorTinta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jLabel11 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("telabackgraoud");
@@ -86,6 +77,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         superficie.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         superficie.setText("Paredes");
+        superficie.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         getContentPane().add(superficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
         ParedeAltura.setActionCommand("<Not Set>");
@@ -116,6 +108,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel5.setText("Teto");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
 
+        Area_larg.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         Area_larg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Area_largActionPerformed(evt);
@@ -161,22 +154,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, -1, -1));
 
         Calcular.setText("Calcular");
+        Calcular.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CalcularActionPerformed(evt);
             }
         });
-        getContentPane().add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 480, -1, -1));
+        getContentPane().add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 530, -1, -1));
 
         Rendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RendimentoActionPerformed(evt);
             }
         });
-        getContentPane().add(Rendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 160, 20));
+        getContentPane().add(Rendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 160, 20));
 
         jLabel1.setText("Rendimento da tinta (m²/L)");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 340, -1, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 440, -1, 20));
 
         ValorTinta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,9 +181,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setText("Preço da Tinta");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
+
+        jLabel11.setText("Quantidade de L");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 340, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 18L", "Lata 3,6L", "Lata 900L" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ParedeAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParedeAlturaActionPerformed
+
         
         try {
             String alturaEmTexto = ParedeAltura.getText();
@@ -302,13 +308,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String rendimentoEmTexto = Rendimento.getText();
             rendimentoEmTexto = rendimentoEmTexto.replace(",", ".");
             this.rendimento = Double.parseDouble(rendimentoEmTexto);
-            System.out.println("Rendimento Armazendo: " + this.rendimento);
+            System.out.println("Rendimento da tinta Armazendo: " + this.rendimento);
              Rendimento.requestFocus();
         } catch (NumberFormatException e) {
             // galerinha, o catch evita que o user digite um numero invalido
             javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números no Rendimento!");
         }
-        
         
         Calcular.requestFocus();
     }//GEN-LAST:event_RendimentoActionPerformed
@@ -319,16 +324,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
             String precoEmTexto = ValorTinta.getText();
             precoEmTexto = precoEmTexto.replace(",", ".");
             this.precoTinta = Double.parseDouble(precoEmTexto);
-            System.out.println("Valor armazenado: " + this.precoTinta);
+            System.out.println("Valor da tinta armazenado: " + this.precoTinta);
              ValorTinta.requestFocus();
         } catch (NumberFormatException e) {
             // galerinha, o catch evita que o user digite um numero invalido
             javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números no Preço!");
         }
         
-        
         Rendimento.requestFocus();
     }//GEN-LAST:event_ValorTintaActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,8 +368,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField Teto_Larg;
     private javax.swing.JTextField Teto_compri;
     private javax.swing.JTextField ValorTinta;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -370,7 +380,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel superficie;
     private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
