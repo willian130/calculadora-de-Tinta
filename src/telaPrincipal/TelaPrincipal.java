@@ -16,21 +16,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
        this.setExtendedState(MAXIMIZED_BOTH);
-     setLocationRelativeTo(null);
-     this.setLocationRelativeTo(null);
+     //setLocationRelativeTo(null);
+     //this.setLocationRelativeTo(null);
  
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        //java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         
         // 2. Pega o tamanho da sua janela atual
-        int windowWidth = this.getWidth();
-        int windowHeight = this.getHeight();
+        //int windowWidth = this.getWidth();
+        //int windowHeight = this.getHeight();
         
         // 3. Faz a matemática para achar o centro
-        int x = (screenSize.width - windowWidth) / 2;
-        int y = (screenSize.height - windowHeight) / 2;
+        //int x = (screenSize.width - windowWidth) / 2;
+        //int y = (screenSize.height - windowHeight) / 2;
         
         //4. Move a janela para lá
-        this.setLocation(x, y);
+        //this.setLocation(x, y);
     
  
     }
@@ -79,6 +79,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         superficie.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         getContentPane().add(superficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
 
+        ParedeAltura.setToolTipText("");
         ParedeAltura.setActionCommand("<Not Set>");
         ParedeAltura.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         ParedeAltura.setMaximumSize(new java.awt.Dimension(0, 0));
@@ -159,7 +160,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 CalcularActionPerformed(evt);
             }
         });
-        getContentPane().add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 530, -1, -1));
+        getContentPane().add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 533, -1, 20));
 
         Rendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,6 +234,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_Teto_compriActionPerformed
 
     private void Teto_LargActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Teto_LargActionPerformed
+         
         try {
             String larguraEmTexto = Teto_Larg.getText();
             larguraEmTexto = larguraEmTexto.replace(",", ".");
@@ -276,14 +278,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // Soma paredes e teto, e subtrai o que não vai pintar
         double areaTotalPintavel = (areaParedes + areaTeto) - areaSemPintar;
         
-        Tela2 novaTela = new Tela2();
-        novaTela.mostrarAreaTotal(areaTotalPintavel);
-        novaTela.setLocation(this.getLocation());
-        novaTela.setVisible(true);
+        TelaFinal finall = new TelaFinal();
         
-        
-        
+        finall.setLocation(this.getLocation());
+        finall.setVisible(true);
+       
         this.dispose();
+        setLocationRelativeTo(null);
+     
+       
     }//GEN-LAST:event_CalcularActionPerformed
 
     private void ParedeLarguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParedeLarguraActionPerformed

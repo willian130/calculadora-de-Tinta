@@ -36,10 +36,6 @@ public class TelaFinal extends javax.swing.JFrame {
     
  
         
-        
-        
-        
-        
     }
 
     /**
@@ -57,7 +53,7 @@ public class TelaFinal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        areaTotalPintavel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,6 +114,7 @@ public class TelaFinal extends javax.swing.JFrame {
         getContentPane().add(jLabel2, gridBagConstraints);
 
         jButton1.setText("Recalcular");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -128,14 +125,14 @@ public class TelaFinal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(26, 1, 27, 0);
         getContentPane().add(jButton1, gridBagConstraints);
 
-        jLabel4.setText("Para área informada de (variavel), a estimativa é de: ");
+        areaTotalPintavel.setText("Para área informada de (variavel), a estimativa é de: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(22, 24, 0, 0);
-        getContentPane().add(jLabel4, gridBagConstraints);
+        getContentPane().add(areaTotalPintavel, gridBagConstraints);
 
         jLabel5.setText("para 2 demãos");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -147,6 +144,19 @@ public class TelaFinal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        TelaMenu menu = new TelaMenu();
+    
+       menu.setLocation(this.getLocation());
+       menu.setVisible(true);
+        
+        new TelaMenu().setVisible(true);
+        this.dispose();
+        setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,11 +184,11 @@ public class TelaFinal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel areaTotalPintavel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
