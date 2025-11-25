@@ -5,12 +5,12 @@ public class TelaMenu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaMenu.class.getName());
 
-    /**
-     * Creates new form TelaMenu
-     */
+    
     public TelaMenu() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+         this.setSize(800, 600); 
+       this.setExtendedState(MAXIMIZED_BOTH);
+       this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -119,7 +119,7 @@ public class TelaMenu extends javax.swing.JFrame {
     principal.setVisible(true);
         
         
-        new TelaPrincipal().setVisible(true);
+       
         this.dispose();
         setLocationRelativeTo(null);
         

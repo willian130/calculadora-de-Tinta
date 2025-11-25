@@ -115,7 +115,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="areaTotalPintavel">
+    <Component class="javax.swing.JLabel" name="ExibirArea">
       <Properties>
         <Property name="text" type="java.lang.String" value="Para &#xe1;rea informada de (variavel), a estimativa &#xe9; de: "/>
       </Properties>

@@ -1,7 +1,5 @@
 package telaPrincipal;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 public class TelaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal.class.getName());
@@ -15,24 +13,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     public TelaPrincipal() {
         initComponents();
+          this.setSize(800, 600); 
        this.setExtendedState(MAXIMIZED_BOTH);
-     //setLocationRelativeTo(null);
-     //this.setLocationRelativeTo(null);
- 
-        //java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        
-        // 2. Pega o tamanho da sua janela atual
-        //int windowWidth = this.getWidth();
-        //int windowHeight = this.getHeight();
-        
-        // 3. Faz a matemática para achar o centro
-        //int x = (screenSize.width - windowWidth) / 2;
-        //int y = (screenSize.height - windowHeight) / 2;
-        
-        //4. Move a janela para lá
-        //this.setLocation(x, y);
-    
- 
+       this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -61,7 +44,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         ValorTinta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        volumeLata = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("telabackgraoud");
@@ -185,13 +168,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel11.setText("Quantidade de Litros");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 340, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 18L", "Lata 3,6L", "Lata 900L" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        volumeLata.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 18L", "Lata 3,6L", "Lata 900L" }));
+        volumeLata.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                volumeLataActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 130, -1));
+        getContentPane().add(volumeLata, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ParedeAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParedeAlturaActionPerformed
@@ -253,9 +236,36 @@ public class TelaPrincipal extends javax.swing.JFrame {
    
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
         
+        
+        // 5a. Determinar o volume da lata selecionada (COM BASE NO COMBOBOX)
+        double quantidadeLitros = 0.0;
+
+        String itemSelecionado = (String) volumeLata.getSelectedItem(); 
+
+        switch (itemSelecionado) {
+            case "Lata 18L":
+                quantidadeLitros = 18.0;
+                break;
+            case "Lata 3,6L":
+                quantidadeLitros = 3.6;
+                break;
+            case "Lata 900L":
+                quantidadeLitros = 900.0;
+                break;
+            default:
+                // Tratar erro
+                javax.swing.JOptionPane.showMessageDialog(this, "Selecione um tamanho de lata para o cálculo de custo.");
+                return; 
+}
+        
+        
         // 1. CALCULAR PAREDES
         double altParede = Double.parseDouble(ParedeAltura.getText().replace(",", "."));
         double largParede = Double.parseDouble(ParedeLargura.getText().replace(",", "."));
+        double rendimentoTinta = Double.parseDouble(Rendimento.getText().replace(",", "."));
+        double precoUnidade = Double.parseDouble(ValorTinta.getText().replace(",", "."));
+
+        
         double areaParedes = altParede * largParede;
         
         // 2. CALCULAR TETO (Se os campos não estiverem vazios)
@@ -277,14 +287,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // 4. CÁLCULO FINAL DA ÁREA TOTAL
         // Soma paredes e teto, e subtrai o que não vai pintar
         double areaTotalPintavel = (areaParedes + areaTeto) - areaSemPintar;
+       
+        //Rendimento
+        //2 demãos
+        double areapara2Demãos = areaTotalPintavel * 2;
+        double litrosNecessarios = areapara2Demãos / rendimentoTinta; 
         
-        TelaFinal finall = new TelaFinal();
+        double precoPorLitro = precoUnidade / quantidadeLitros;
+        double custoTotal = litrosNecessarios * precoPorLitro;
+
+        
+        TelaFinal finall = new TelaFinal(areaTotalPintavel, litrosNecessarios, custoTotal);
         
         finall.setLocation(this.getLocation());
         finall.setVisible(true);
        
         this.dispose();
         setLocationRelativeTo(null);
+        
      
        
     }//GEN-LAST:event_CalcularActionPerformed
@@ -336,9 +356,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Rendimento.requestFocus();
     }//GEN-LAST:event_ValorTintaActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void volumeLataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volumeLataActionPerformed
     
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_volumeLataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,7 +390,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField Teto_Larg;
     private javax.swing.JTextField Teto_compri;
     private javax.swing.JTextField ValorTinta;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -384,5 +403,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel superficie;
     private javax.swing.JLabel titulo1;
+    private javax.swing.JComboBox<String> volumeLata;
     // End of variables declaration//GEN-END:variables
 }
