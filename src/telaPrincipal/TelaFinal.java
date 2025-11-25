@@ -8,14 +8,18 @@ public class TelaFinal extends javax.swing.JFrame {
     
     public TelaFinal() {
         initComponents();
-       this.setSize(800, 600); 
-       this.setExtendedState(MAXIMIZED_BOTH);
-       this.setLocationRelativeTo(null);
-        
-    }
+      
+         // FORÇA UM TAMANHO MÍNIMO (Isso resolve o problema dela ficar minúscula)
+         this.setSize(800, 600); 
+         this.setExtendedState(MAXIMIZED_BOTH);
+         this.setMinimumSize(new java.awt.Dimension(600, 400));
+    
+    this.setLocationRelativeTo(null);
+    // this.setExtendedState(MAXIMIZED_BOTH); // Pode deixar maximizado se quiser
+}
 
-    TelaFinal(double areaTotalPintavel, double litrosNecessarios, double custoTotal) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    TelaFinal(double areaTotalPintavel, double litrosNecessarios, double custoFinal) {
+       
     }
     @SuppressWarnings("unchecked")
     
@@ -26,7 +30,7 @@ public class TelaFinal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLableC = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         ExibirArea = new javax.swing.JLabel();
@@ -42,30 +46,28 @@ public class TelaFinal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/paint-bucket_588431_resized.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jLabel3.setText("preço");
+        jLableC.setBackground(new java.awt.Color(0, 0, 255));
+        jLableC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLableC.setText("preço");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(198, 198, 198)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
+            .addComponent(jLableC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLableC)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -120,7 +122,13 @@ public class TelaFinal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+public void atualizarResultados(double area, double litros, double latas, double custoFinal) {
+    // Verifica se as variáveis (ExibirArea, etc) estão com o nome certo no seu Design
+    ExibirArea.setText("Área Total: " + String.format("%.2f", area) + " m²");
+    jLabel2.setText("Litros Necessários: " + String.format("%.2f", litros) + " L");
+    jLabel5.setText("Latas Necessárias: " + String.format("%.0f", latas)); // Usando jLabel5 para latas
+    jLableC.setText("Custo Estimado: R$ " + String.format("%.2f", custoFinal));
+}
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
@@ -164,8 +172,8 @@ public class TelaFinal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLableC;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
