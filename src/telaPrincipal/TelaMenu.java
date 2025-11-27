@@ -24,7 +24,6 @@ public class TelaMenu extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,7 +50,7 @@ public class TelaMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(203, 203, 203)
                         .addComponent(comecar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,9 +82,6 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel2.setText("Como usar a calculadora");
         jTabbedPane1.addTab("tab2", jLabel2);
 
-        jLabel3.setText("Sobre o grupo");
-        jTabbedPane1.addTab("tab3", jLabel3);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -104,7 +100,7 @@ public class TelaMenu extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 95;
         gridBagConstraints.ipady = 3;
-        gridBagConstraints.insets = new java.awt.Insets(100, 250, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(100, 70, 0, 0);
         getContentPane().add(jLabel4, gridBagConstraints);
 
         pack();
@@ -154,7 +150,6 @@ public class TelaMenu extends javax.swing.JFrame {
     private javax.swing.JButton comecar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;

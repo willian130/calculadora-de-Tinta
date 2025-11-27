@@ -132,10 +132,10 @@ public void atualizarResultados(double area, double litros, double latas, double
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        TelaMenu menu = new TelaMenu();
+        TelaPrincipal principal = new TelaPrincipal();
     
-       menu.setLocation(this.getLocation());
-       menu.setVisible(true);
+    principal.setLocation(this.getLocation());
+    principal.setVisible(true);
         
         this.dispose();
         setLocationRelativeTo(null);
