@@ -12,7 +12,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private double areaLarg = 0.0;
     private double areaAlt = 0.0;
     
+    class DadosTinta {
+    double rendimento;
+    double preco20L;
+    double preco18L;
+    double preco3_6L;
+    double preco0_9L;
+
+    public DadosTinta(double r, double p20,double p18, double p36, double p09) {
+        this.rendimento = r;
+        this.preco20L = p20;
+        this.preco18L = p18;
+        this.preco3_6L = p36;
+        this.preco0_9L = p09;
+    }
+}
+    // Método para pegar os dados baseados na marca escolhida
+private DadosTinta obterDadosDaMarca() {
+    String marca = comboMarcas.getSelectedItem().toString();
     
+    // Exemplo de preços e rendimentos (Você pode alterar os valores)
+    if (marca.contains("Lumina Prime")) {
+        // Rende 16m²/L | 20L custa 600 18L custa 400 | 3.6L custa 90 | 0.9L custa 30
+        return new DadosTinta(16.0,600.00, 400.00, 90.00, 30.00); 
+    } 
+    else if (marca.contains("EcoViva")) {
+        // Rende 10m²/L | 20L custa 450  18L custa 250 | 3.6L custa 60 | 0.9L custa 20
+        return new DadosTinta(10.0,450.00,250.00, 60.00, 20.00);
+    } 
+    else { // Econômica
+        // Rende 8m²/L | 20L custa 200 18L custa 150 | 3.6L custa 40 | 0.9L custa 15
+        return new DadosTinta(8.0,200.00, 150.00, 40.00, 15.00);
+    }
+}
     public TelaPrincipal() {
         initComponents();
           this.setSize(800, 600); 
@@ -30,7 +62,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             protected void paintComponent(java.awt.Graphics g) {
                 super.paintComponent(g);
                 // CORREÇÃO: Adicionei "/Imagens/" antes do nome do arquivo
-                java.net.URL imgURL = getClass().getResource("/Imagens/whitePinkBlack.png");
+                java.net.URL imgURL = getClass().getResource("/Imagens/pinkPrint (1).png");
 
                 if (imgURL != null) {
                     javax.swing.ImageIcon icon = new javax.swing.ImageIcon(imgURL);
@@ -42,10 +74,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         };
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Rendimento = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        ValorTinta = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         ParedeLargura = new javax.swing.JTextField();
         superficie = new javax.swing.JLabel();
@@ -60,10 +90,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         Area_Alt = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        volumeLata = new javax.swing.JComboBox<>();
+        comboMarcas = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         titulo1 = new javax.swing.JLabel();
+        volumeLata1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("telabackgraoud");
@@ -78,16 +108,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel8.setText("Área sem pintar");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Preço da Tinta");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Marcas");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
-
-        Rendimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RendimentoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Rendimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 160, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Teto");
@@ -95,13 +118,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel11.setText("Quantidade de Litros");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, -1, -1));
-
-        ValorTinta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ValorTintaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(ValorTinta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 230, 30));
 
         jLabel3.setText("Altura (digite em metros)");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
@@ -124,7 +140,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 Area_largActionPerformed(evt);
             }
         });
-        jPanel1.add(Area_larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 320, 230, 30));
+        jPanel1.add(Area_larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 321, 230, 30));
 
         jLabel9.setText("Altura");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
@@ -162,7 +178,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 Teto_LargActionPerformed(evt);
             }
         });
-        jPanel1.add(Teto_Larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 240, 230, 30));
+        jPanel1.add(Teto_Larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 241, 230, 30));
 
         jLabel4.setText("Largura");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, -1, -1));
@@ -183,17 +199,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(Area_Alt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 230, 30));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Rendimento da tinta (m²/L)");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 440, -1, 20));
-
-        volumeLata.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 20L", "Lata 18L", "Lata 3,6L", "Lata 900L" }));
-        volumeLata.addActionListener(new java.awt.event.ActionListener() {
+        comboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lumina Prime", "EcoViva", "AceleraCor" }));
+        comboMarcas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                volumeLataActionPerformed(evt);
+                comboMarcasActionPerformed(evt);
             }
         });
-        jPanel1.add(volumeLata, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 230, 30));
+        jPanel1.add(comboMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 230, 30));
 
         jPanel2.setBackground(new java.awt.Color(250, 227, 198));
 
@@ -204,6 +216,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2.add(titulo1);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 570, 50));
+
+        volumeLata1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 20L", "Lata 18L", "Lata 3,6L", "Lata 900ML" }));
+        volumeLata1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volumeLata1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(volumeLata1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 230, 30));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -227,22 +247,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Area_larg.requestFocus();
     }//GEN-LAST:event_Area_AltActionPerformed
 
-    private void ValorTintaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValorTintaActionPerformed
-
-        try {
-            String precoEmTexto = ValorTinta.getText();
-            precoEmTexto = precoEmTexto.replace(",", ".");
-            this.precoTinta = Double.parseDouble(precoEmTexto);
-            System.out.println("Valor da tinta armazenado: " + this.precoTinta);
-            ValorTinta.requestFocus();
-        } catch (NumberFormatException e) {
-            // galerinha, o catch evita que o user digite um numero invalido
-            javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números no Preço!");
-        }
-
-        Rendimento.requestFocus();
-    }//GEN-LAST:event_ValorTintaActionPerformed
-
     private void Area_largActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Area_largActionPerformed
         try {
             String alturaEmTexto = Area_larg.getText();
@@ -255,7 +259,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números na altura!");
         }
 
-        ValorTinta.requestFocus();
+        
     }//GEN-LAST:event_Area_largActionPerformed
 
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
@@ -292,24 +296,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             // --- CÁLCULOS ---
             double areaTotal = (areaParedes + areaTeto) - areaSemPintar;
+            
+           DadosTinta dados = obterDadosDaMarca();
+           
+           double litrosNecessarios = areaTotal / dados.rendimento;
+           // Gera a sugestão de compra (misturando latas)
+           String textoSugestao = margemDeRendimento(litrosNecessarios, dados);
 
-            // Proteção para Rendimento e Preço
-            double rendimentoVal = Rendimento.getText().trim().isEmpty() ? 10.0 : Double.parseDouble(Rendimento.getText().replace(",", "."));
-            double precoVal = ValorTinta.getText().trim().isEmpty() ? 0.0 : Double.parseDouble(ValorTinta.getText().replace(",", "."));
-
+           
             // Tamanho da lata (usando valor padrão se der erro)
-            double volLata = 18.0;
-            try {
-                // Verifica se o item selecionado contém o texto
-                String item = volumeLata.getSelectedItem().toString();
-                if(item.contains("3,6")) volLata = 3.6;
-                else if(item.contains("900")) volLata = 0.9;
-            } catch (Exception e) {}
+            double volLataSelecionada = 20.0;
+           try {
+             // CORREÇÃO: Usando volumeLata1 (nome correto) e não comboMarcas
+             String item = volumeLata1.getSelectedItem().toString();
+             if (item.contains("20")) volLataSelecionada = 20.0;
+             else if (item.contains("18")) volLataSelecionada = 18.0;
+             else if (item.contains("3,6")) volLataSelecionada = 3.6;
+             else if (item.contains("900")) volLataSelecionada = 0.9;
+        } catch (Exception e) {}
+          
+            double latasNecessarias = Math.ceil(litrosNecessarios / volLataSelecionada);
+           
+             double precoLataSelecionada = 0.0;
+                if (volLataSelecionada == 20.0) precoLataSelecionada = dados.preco20L;
+                else if (volLataSelecionada == 18.0) precoLataSelecionada = dados.preco18L;
+                else if (volLataSelecionada == 3.6) precoLataSelecionada = dados.preco3_6L;
+                else precoLataSelecionada = dados.preco0_9L;
 
-            double litrosNecessarios = areaTotal / rendimentoVal;
-            double latasNecessarias = Math.ceil(litrosNecessarios / volLata);
-            double custoFinal = latasNecessarias * precoVal;
-
+            
+            double custoFinal = latasNecessarias * precoLataSelecionada;
+            double precoPorLitro = precoLataSelecionada / volLataSelecionada ;
+              // Gera a sugestão inteligente (mistura de latas)
+                String Sugestao = margemDeRendimento(litrosNecessarios, dados);
             // --- TROCA DE TELA ---
             TelaFinal finall = new TelaFinal();
 
@@ -317,7 +335,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             finall.setSize(800, 600);
 
             // Passa os dados
-            finall.atualizarResultados(areaTotal, litrosNecessarios, latasNecessarias, custoFinal);
+            finall.atualizarResultados(areaTotal, litrosNecessarios, latasNecessarias, custoFinal,precoPorLitro, volLataSelecionada, Sugestao);
 
             finall.setLocationRelativeTo(null); // Centraliza
             finall.setVisible(true);
@@ -332,9 +350,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CalcularActionPerformed
 
-    private void volumeLataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volumeLataActionPerformed
+    private void comboMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMarcasActionPerformed
 
-    }//GEN-LAST:event_volumeLataActionPerformed
+    }//GEN-LAST:event_comboMarcasActionPerformed
 
     private void ParedeAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParedeAlturaActionPerformed
 
@@ -349,22 +367,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números na altura!");
         }
     }//GEN-LAST:event_ParedeAlturaActionPerformed
-
-    private void RendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RendimentoActionPerformed
-
-        try {
-            String rendimentoEmTexto = Rendimento.getText();
-            rendimentoEmTexto = rendimentoEmTexto.replace(",", ".");
-            this.rendimento = Double.parseDouble(rendimentoEmTexto);
-            System.out.println("Rendimento da tinta Armazendo: " + this.rendimento);
-            Rendimento.requestFocus();
-        } catch (NumberFormatException e) {
-            // galerinha, o catch evita que o user digite um numero invalido
-            javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números no Rendimento!");
-        }
-
-        Calcular.requestFocus();
-    }//GEN-LAST:event_RendimentoActionPerformed
 
     private void ParedeLarguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParedeLarguraActionPerformed
         try {
@@ -412,7 +414,56 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Teto_LargActionPerformed
 
-   
+    private void volumeLata1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volumeLata1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_volumeLata1ActionPerformed
+ 
+    
+    private String margemDeRendimento (double litrosNecessarios, DadosTinta dados) {
+    // Adiciona 10% de margem de segurança (sobra)
+    double litrosComMargem = litrosNecessarios * 1.10;
+    
+    int latas20 = 0;
+    int latas18 = 0;
+    int galoes36 = 0;
+    int latas09 = 0;
+    double volumeAtual = 0.0;
+
+    // 1. Tenta encher com latas grandes (18L)
+     while (volumeAtual + 20.0 <= litrosComMargem) {
+        latas20++;
+        volumeAtual += 20.0;
+     }
+    while (volumeAtual + 18.0 <= litrosComMargem) {
+        latas18++;
+        volumeAtual += 18.0;
+    }
+
+    // 2. O que faltou, tenta com galões (3.6L)
+    while (volumeAtual + 3.6 <= litrosComMargem) {
+        galoes36++;
+        volumeAtual += 3.6;
+    }
+
+    // 3. O restinho, completa com latas pequenas (0.9L)
+    while (volumeAtual < litrosComMargem) {
+        latas09++;
+        volumeAtual += 0.9;
+    }
+    
+    // Monta o texto da sugestão e calcula o preço total dessa combinação
+    double precoTotalMix = (latas20 * dados.preco20L) + (latas18 * dados.preco18L) + (galoes36 * dados.preco3_6L) + (latas09 * dados.preco0_9L);
+    
+    String sugestao = String.format("<html>Sugestão de Compra (com 10%% de sobra):<br>"
+             + "%d lata(s) de 20L<br>"
+            + "%d lata(s) de 18L<br>"
+            + "%d galão(ões) de 3,6L<br>"
+            + "%d lata(s) de 0,9L<br>"
+            + "<b>Valor Total Estimado: R$ %.2f</b></html>", 
+            latas20,latas18, galoes36, latas09, precoTotalMix);
+            
+    return sugestao;
+}
     /**
      * @param args the command line arguments
      */
@@ -439,11 +490,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton Calcular;
     private javax.swing.JTextField ParedeAltura;
     private javax.swing.JTextField ParedeLargura;
-    private javax.swing.JTextField Rendimento;
     private javax.swing.JTextField Teto_Larg;
     private javax.swing.JTextField Teto_compri;
-    private javax.swing.JTextField ValorTinta;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> comboMarcas;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
@@ -458,6 +507,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel superficie;
     private javax.swing.JLabel titulo1;
-    private javax.swing.JComboBox<String> volumeLata;
+    private javax.swing.JComboBox<String> volumeLata1;
     // End of variables declaration//GEN-END:variables
 }

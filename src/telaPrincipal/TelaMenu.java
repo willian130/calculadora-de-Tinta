@@ -32,7 +32,7 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
-        comecar.setText("Clacular");
+        comecar.setText("Calcular");
         comecar.addActionListener(this::comecarActionPerformed);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
