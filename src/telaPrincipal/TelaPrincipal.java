@@ -96,12 +96,12 @@ private DadosTinta obterDadosDaMarca() {
         volumeLata1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("telabackgraoud");
         setAlwaysOnTop(true);
         setAutoRequestFocus(false);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
+        jPanel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -213,9 +213,11 @@ private DadosTinta obterDadosDaMarca() {
         titulo1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         titulo1.setForeground(new java.awt.Color(225, 145, 164));
         titulo1.setText("Preencha os campos abaixo para calcular");
+        titulo1.setMaximumSize(new java.awt.Dimension(600, 50));
+        titulo1.setMinimumSize(new java.awt.Dimension(600, 32));
         jPanel2.add(titulo1);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 570, 50));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 660, 50));
 
         volumeLata1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 20L", "Lata 18L", "Lata 3,6L", "Lata 900ML" }));
         volumeLata1.addActionListener(new java.awt.event.ActionListener() {
@@ -299,7 +301,7 @@ private DadosTinta obterDadosDaMarca() {
             
            DadosTinta dados = obterDadosDaMarca();
            
-           double litrosNecessarios = areaTotal / dados.rendimento;
+           double litrosNecessarios = (areaTotal / dados.rendimento) * 2;
            // Gera a sugestão de compra (misturando latas)
            String textoSugestao = margemDeRendimento(litrosNecessarios, dados);
 
@@ -469,16 +471,15 @@ private DadosTinta obterDadosDaMarca() {
      */
     public static void main(String args[]) {
        
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        try{
+            // FlatDarkLaf = Escuro (Dark Mode)
+            // FlatLightLaf = Claro (Light Mode)
+            // FlatIntelliJLaf = Estilo IntelliJ
+            // FlatDarculaLaf = Estilo Darcula
+        javax.swing.UIManager.setLookAndFeel( new com.formdev.flatlaf.FlatIntelliJLaf() );
+    } catch( Exception ex ) {
+        System.err.println( "Erro no tema. Usando padrão." );
+    }
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(() -> new TelaPrincipal().setVisible(true));

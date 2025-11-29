@@ -36,6 +36,7 @@ public class TelaFinal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         ExibirArea = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        baixar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -75,10 +76,25 @@ public class TelaFinal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("(variavel) litros");
 
+        baixar.setText("Salvar");
+        baixar.addActionListener(this::baixarActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(252, 252, 252)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(jLabel4)))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -92,27 +108,22 @@ public class TelaFinal extends javax.swing.JFrame {
                                     .addComponent(ExibirArea, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(288, 288, 288)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(252, 252, 252)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(248, 248, 248)
-                                .addComponent(jLabel4)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(288, 288, 288)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(baixar)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(baixar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
@@ -162,6 +173,57 @@ public void atualizarResultados(double area, double litros, double latas, double
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel1ComponentHidden
 
+    private void baixarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarActionPerformed
+       
+        // 1. Prepara o conteúdo do texto (Pega o que está escrito nos Labels)
+    String conteudo = "=== RELATÓRIO CALCULADORA DE TINTA ===\n\n" +
+                      ExibirArea.getText() + "\n" +
+                      jLabel2.getText() + "\n" +
+                      jLabel5.getText() + "\n" +
+                      "--------------------------------------\n" +
+                      jLableC.getText().replace("<html>", "").replace("<br>", "\n").replace("</html>", "") + // Limpa o HTML do preço
+                      "\n\nGerado automaticamente.";
+
+    // 2. Abre a janela para escolher onde salvar
+    javax.swing.JFileChooser arquivo = new javax.swing.JFileChooser();
+    arquivo.setDialogTitle("Salvar Relatório");
+    
+    // Sugere um nome padrão
+    arquivo.setSelectedFile(new java.io.File("Orcamento_Pintura.txt"));
+
+    int escolha = arquivo.showSaveDialog(this);
+
+    // 3. Se o usuário clicou em "Salvar"
+    if (escolha == javax.swing.JFileChooser.APPROVE_OPTION) {
+        java.io.File file = arquivo.getSelectedFile();
+        
+        // Garante que termine com .txt
+        if (!file.getName().toLowerCase().endsWith(".txt")) {
+            file = new java.io.File(file.getParentFile(), file.getName() + ".txt");
+        }
+
+        // 4. Escreve o arquivo no computador
+        try (java.io.FileWriter writer = new java.io.FileWriter(file)) {
+            writer.write(conteudo);
+            writer.close(); // Fecha o arquivo
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Arquivo salvo com sucesso em:\n" + file.getAbsolutePath());
+            
+            // (Opcional) Abre o arquivo automaticamente para você ver
+            java.awt.Desktop.getDesktop().open(file);
+            
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar arquivo: " + e.getMessage());
+        }
+    }
+
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_baixarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -171,16 +233,15 @@ public void atualizarResultados(double area, double litros, double latas, double
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        try{
+            // FlatDarkLaf = Escuro (Dark Mode)
+            // FlatLightLaf = Claro (Light Mode)
+            // FlatIntelliJLaf = Estilo IntelliJ
+            // FlatDarculaLaf = Estilo Darcula
+            com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme.setup();
+    } catch( Exception ex ) {
+        System.err.println( "Erro no tema. Usando padrão." );
+    }
         //</editor-fold>
 
         /* Create and display the form */
@@ -189,6 +250,7 @@ public void atualizarResultados(double area, double litros, double latas, double
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ExibirArea;
+    private javax.swing.JButton baixar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

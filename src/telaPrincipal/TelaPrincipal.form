@@ -3,7 +3,6 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="telabackgraoud"/>
     <Property name="alwaysOnTop" type="boolean" value="true"/>
     <Property name="autoRequestFocus" type="boolean" value="false"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -29,6 +28,11 @@
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel() {&#xd;&#xa;    @Override&#xd;&#xa;    protected void paintComponent(java.awt.Graphics g) {&#xd;&#xa;        super.paintComponent(g);&#xd;&#xa;        // CORRE&#xc7;&#xc3;O: Adicionei &quot;/Imagens/&quot; antes do nome do arquivo&#xd;&#xa;        java.net.URL imgURL = getClass().getResource(&quot;/Imagens/pinkPrint (1).png&quot;);&#xd;&#xa;        &#xd;&#xa;        if (imgURL != null) {&#xd;&#xa;            javax.swing.ImageIcon icon = new javax.swing.ImageIcon(imgURL);&#xd;&#xa;            g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);&#xd;&#xa;        } else {&#xd;&#xa;            System.err.println(&quot;Imagem n&#xe3;o encontrada: verifique o nome!&quot;);&#xd;&#xa;        }&#xd;&#xa;    }&#xd;&#xa;}"/>
       </AuxValues>
@@ -287,7 +291,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="440" y="40" width="570" height="50"/>
+              <AbsoluteConstraints x="390" y="40" width="660" height="50"/>
             </Constraint>
           </Constraints>
 
@@ -305,6 +309,12 @@
                   <Color blue="a4" green="91" red="e1" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Preencha os campos abaixo para calcular"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[600, 50]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[600, 32]"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
