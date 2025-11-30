@@ -240,7 +240,7 @@ private DadosTinta obterDadosDaMarca() {
         jPanel1.add(btnAdicionarParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, -1));
 
         lblTotalParedes.setText("Total Paredes: 0.00 m²");
-        jPanel1.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 200, -1));
+        jPanel1.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 200, -1));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;

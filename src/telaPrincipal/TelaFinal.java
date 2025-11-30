@@ -1,8 +1,61 @@
 
 package telaPrincipal;
-
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
+import javax.swing.JOptionPane;
 public class TelaFinal extends javax.swing.JFrame {
-    
+      public class GeradorPDF {
+    /**
+     * Gera um arquivo PDF no caminho especificado com o conteúdo fornecido.
+     * @param caminhoCompleto O caminho completo para o novo arquivo PDF (ex: "/home/user/relatorio.pdf")
+     * @param resultadosFormatados O texto com os resultados do cálculo (o que ia para o TXT)
+     */
+    public static void gerarRelatorio(String caminhoCompleto, String resultadosFormatados) throws Exception {
+        
+        // 1. Cria um novo objeto Documento
+        Document documento = new Document();
+
+        try {
+            // 2. Cria o PdfWriter, ligando o documento ao FileOutputStream
+            PdfWriter.getInstance(documento, new FileOutputStream(caminhoCompleto));
+
+            // 3. Abre o documento para começar a escrever
+            documento.open();
+
+            // Adiciona um título ou cabeçalho
+            documento.add(new Paragraph("--- RELATÓRIO DA CALCULADORA DE TINTA ---"));
+            documento.add(new Paragraph("\n")); // Adiciona uma linha em branco
+
+            // Adiciona o conteúdo do relatório
+            String[] linhas = resultadosFormatados.split("\n");
+            for (String linha : linhas) {
+                // Adiciona a linha (como um parágrafo)
+                documento.add(new Paragraph(linha)); 
+            }
+            
+            // Opcional: Adicionar rodapé
+            documento.add(new Paragraph("\n"));
+            
+            
+            java.util.Locale localeBrasil = new java.util.Locale("pt", "BR");
+            java.text.SimpleDateFormat formatador = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss", localeBrasil);
+            String dataFormatada = formatador.format(new java.util.Date());
+            documento.add(new Paragraph("Gerado em: " + dataFormatada));
+            // -------------------------------------------------------------
+
+        } catch (Exception e) {
+            // Lança a exceção para ser tratada pelo método que chamou (na classe Swing)
+            throw new Exception("Erro interno do iText: " + e.getMessage());
+        } finally {
+            // 4. Sempre fecha o documento
+            if (documento.isOpen()) {
+                documento.close();
+            }
+        }
+    }
+}
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaFinal.class.getName());
 
     
@@ -175,53 +228,58 @@ public void atualizarResultados(double area, double litros, double latas, double
 
     private void baixarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarActionPerformed
        
-        // 1. Prepara o conteúdo do texto (Pega o que está escrito nos Labels)
-    String conteudo = "=== RELATÓRIO CALCULADORA DE TINTA ===\n\n" +
-                      ExibirArea.getText() + "\n" +
-                      jLabel2.getText() + "\n" +
-                      jLabel5.getText() + "\n" +
-                      "--------------------------------------\n" +
-                      jLableC.getText().replace("<html>", "").replace("<br>", "\n").replace("</html>", "") + // Limpa o HTML do preço
-                      "\n\nGerado automaticamente.";
+        // O iText (na classe GeradorPDF) usará essas quebras de linha (\n) para formatar o PDF.
+        String conteudo = "======================================\n\n" +
+                          
+                          jLabel4.getText() + "\n" +
+                          ExibirArea.getText() + "\n" +
+                          jLabel2.getText() + "\n" +
+                          jLabel5.getText() + "\n" +
+                          "--------------------------------------\n" +
+                          jLableC.getText().replace("<html>", "").replace("<br>", "\n").replace("</html>", "") +
+                          "\n\nGerado automaticamente.";
 
-    // 2. Abre a janela para escolher onde salvar
-    javax.swing.JFileChooser arquivo = new javax.swing.JFileChooser();
-    arquivo.setDialogTitle("Salvar Relatório");
-    
-    // Sugere um nome padrão
-    arquivo.setSelectedFile(new java.io.File("Orcamento_Pintura.txt"));
+        // 2. Abre a janela para escolher onde salvar
+        javax.swing.JFileChooser arquivo = new javax.swing.JFileChooser();
+        arquivo.setDialogTitle("Salvar Relatório PDF");
 
-    int escolha = arquivo.showSaveDialog(this);
+        // **************** MUDANÇA 1: Nome Padrão do Arquivo ****************
+        // Sugere um nome padrão com a extensão .pdf
+        arquivo.setSelectedFile(new java.io.File("Orcamento_Pintura.pdf"));
 
-    // 3. Se o usuário clicou em "Salvar"
-    if (escolha == javax.swing.JFileChooser.APPROVE_OPTION) {
-        java.io.File file = arquivo.getSelectedFile();
-        
-        // Garante que termine com .txt
-        if (!file.getName().toLowerCase().endsWith(".txt")) {
-            file = new java.io.File(file.getParentFile(), file.getName() + ".txt");
-        }
+        int escolha = arquivo.showSaveDialog(this);
 
-        // 4. Escreve o arquivo no computador
-        try (java.io.FileWriter writer = new java.io.FileWriter(file)) {
-            writer.write(conteudo);
-            writer.close(); // Fecha o arquivo
-            
-            javax.swing.JOptionPane.showMessageDialog(this, "Arquivo salvo com sucesso em:\n" + file.getAbsolutePath());
-            
-            // (Opcional) Abre o arquivo automaticamente para você ver
-            java.awt.Desktop.getDesktop().open(file);
-            
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Erro ao salvar arquivo: " + e.getMessage());
-        }
-    }
+        // 3. Se o usuário clicou em "Salvar"
+        if (escolha == javax.swing.JFileChooser.APPROVE_OPTION) {
+            java.io.File file = arquivo.getSelectedFile();
+            String caminhoCompleto = file.getAbsolutePath();
 
-        
-        
-        
-        
-        
+            // **************** MUDANÇA 2: Garante que termine com .pdf ****************
+            if (!caminhoCompleto.toLowerCase().endsWith(".pdf")) {
+                caminhoCompleto += ".pdf";
+            }
+
+            // **************** MUDANÇA 3: Substitui a escrita TXT pela chamada PDF ****************
+            try {
+                // Chama o método estático que você criou na classe GeradorPDF
+                GeradorPDF.gerarRelatorio(caminhoCompleto, conteudo);
+                
+                // Exibe a mensagem de sucesso
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    "Relatório PDF salvo com sucesso em:\n" + caminhoCompleto, 
+                    "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+                // (Opcional) Abre o arquivo PDF automaticamente para você ver
+                java.awt.Desktop.getDesktop().open(new java.io.File(caminhoCompleto));
+
+            } catch (Exception e) {
+                // Trata exceções que possam ocorrer na geração do PDF
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    "Erro ao gerar o arquivo PDF: " + e.getMessage(), 
+                    "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        }     
     }//GEN-LAST:event_baixarActionPerformed
 
     /**
