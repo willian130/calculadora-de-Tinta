@@ -11,6 +11,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private double precoTinta = 0.0;
     private double areaLarg = 0.0;
     private double areaAlt = 0.0;
+    private double areaTotalParedesAcumulada = 0.0;
+    private int contadorParedes = 0;
     
     class DadosTinta {
     double rendimento;
@@ -94,6 +96,8 @@ private DadosTinta obterDadosDaMarca() {
         jPanel2 = new javax.swing.JPanel();
         titulo1 = new javax.swing.JLabel();
         volumeLata1 = new javax.swing.JComboBox<>();
+        btnAdicionarParede = new javax.swing.JButton();
+        lblTotalParedes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -134,7 +138,7 @@ private DadosTinta obterDadosDaMarca() {
         superficie.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jPanel1.add(superficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
 
-        Area_larg.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Area_larg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Area_larg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Area_largActionPerformed(evt);
@@ -154,7 +158,7 @@ private DadosTinta obterDadosDaMarca() {
 
         ParedeAltura.setToolTipText("");
         ParedeAltura.setActionCommand("<Not Set>");
-        ParedeAltura.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ParedeAltura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ParedeAltura.setMaximumSize(new java.awt.Dimension(0, 0));
         ParedeAltura.setMinimumSize(new java.awt.Dimension(0, 0));
         ParedeAltura.addActionListener(new java.awt.event.ActionListener() {
@@ -227,6 +231,17 @@ private DadosTinta obterDadosDaMarca() {
         });
         jPanel1.add(volumeLata1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 230, 30));
 
+        btnAdicionarParede.setText("Adicionar Parede");
+        btnAdicionarParede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarParedeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAdicionarParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, -1));
+
+        lblTotalParedes.setText("Total Paredes: 0.00 m²");
+        jPanel1.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 460, 200, -1));
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -267,16 +282,28 @@ private DadosTinta obterDadosDaMarca() {
     private void CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalcularActionPerformed
 
         try {
-            // --- MÉTODOS SEGUROS DE CAPTURA (Se estiver vazio, vale 0) ---
+            // --- 1. CÁLCULO DAS PAREDES (COM SOMA ACUMULADA) ---
+            
+            // Verifica se o usuário digitou algo nos campos mas esqueceu de clicar em "Adicionar Parede"
+            double areaParedesUltima = 0.0;
+            if (!ParedeAltura.getText().isEmpty() && !ParedeLargura.getText().isEmpty()) {
+                 double altP = Double.parseDouble(ParedeAltura.getText().replace(",", "."));
+                 double largP = Double.parseDouble(ParedeLargura.getText().replace(",", "."));
+                 areaParedesUltima = altP * largP;
+            }
+            
+            // Soma a área acumulada (das paredes já adicionadas) com a área que está nos campos agora
+            double areaParedesFinal = this.areaTotalParedesAcumulada + areaParedesUltima;
 
-            // 1. Paredes (Obrigatório - se vazio, vai dar erro e cair no catch)
-            double altP = Double.parseDouble(ParedeAltura.getText().replace(",", "."));
-            double largP = Double.parseDouble(ParedeLargura.getText().replace(",", "."));
-            double areaParedes = altP * largP;
+            // Validação: Se não tiver nenhuma parede, avisa e para.
+            if (areaParedesFinal == 0) {
+                 javax.swing.JOptionPane.showMessageDialog(this, "Nenhuma parede foi adicionada ou os campos estão vazios!");
+                 return;
+            }
 
-            // 2. Teto (OPCIONAL - Proteção adicionada)
+            // --- 2. TETO (OPCIONAL) ---
             double areaTeto = 0.0;
-            String tetoCompText = Teto_compri.getText().trim(); // .trim() remove espaços
+            String tetoCompText = Teto_compri.getText().trim();
             String tetoLargText = Teto_Larg.getText().trim();
 
             if (!tetoCompText.isEmpty() && !tetoLargText.isEmpty()) {
@@ -285,7 +312,7 @@ private DadosTinta obterDadosDaMarca() {
                 areaTeto = compT * largT;
             }
 
-            // 3. Área sem pintar (OPCIONAL - Proteção adicionada)
+            // --- 3. ÁREA SEM PINTAR (OPCIONAL) ---
             double areaSemPintar = 0.0;
             String areaAltText = Area_Alt.getText().trim();
             String areaLargText = Area_larg.getText().trim();
@@ -296,59 +323,59 @@ private DadosTinta obterDadosDaMarca() {
                 areaSemPintar = altS * largS;
             }
 
-            // --- CÁLCULOS ---
-            double areaTotal = (areaParedes + areaTeto) - areaSemPintar;
+            // --- CÁLCULOS FINAIS ---
+            double areaTotal = (areaParedesFinal + areaTeto) - areaSemPintar;
             
-           DadosTinta dados = obterDadosDaMarca();
-           
-           double litrosNecessarios = (areaTotal / dados.rendimento) * 2;
-           // Gera a sugestão de compra (misturando latas)
-           String textoSugestao = margemDeRendimento(litrosNecessarios, dados);
+            // Evita área negativa
+            if (areaTotal < 0) {
+                areaTotal = 0;
+            }
 
+            DadosTinta dados = obterDadosDaMarca();
            
-            // Tamanho da lata (usando valor padrão se der erro)
-            double volLataSelecionada = 20.0;
-           try {
-             // CORREÇÃO: Usando volumeLata1 (nome correto) e não comboMarcas
-             String item = volumeLata1.getSelectedItem().toString();
-             if (item.contains("20")) volLataSelecionada = 20.0;
-             else if (item.contains("18")) volLataSelecionada = 18.0;
-             else if (item.contains("3,6")) volLataSelecionada = 3.6;
-             else if (item.contains("900")) volLataSelecionada = 0.9;
-        } catch (Exception e) {}
+            // Cálculo de litros (considerando 2 demãos, conforme seu código original)
+            double litrosNecessarios = (areaTotal / dados.rendimento) * 2;
+           
+            // Tamanho da lata selecionada
+            double volLataSelecionada = 20.0; // Valor padrão
+            try {
+                String item = volumeLata1.getSelectedItem().toString();
+                if (item.contains("20")) volLataSelecionada = 20.0;
+                else if (item.contains("18")) volLataSelecionada = 18.0;
+                else if (item.contains("3,6")) volLataSelecionada = 3.6;
+                else if (item.contains("900")) volLataSelecionada = 0.9;
+            } catch (Exception e) {}
           
             double latasNecessarias = Math.ceil(litrosNecessarios / volLataSelecionada);
            
-             double precoLataSelecionada = 0.0;
-                if (volLataSelecionada == 20.0) precoLataSelecionada = dados.preco20L;
-                else if (volLataSelecionada == 18.0) precoLataSelecionada = dados.preco18L;
-                else if (volLataSelecionada == 3.6) precoLataSelecionada = dados.preco3_6L;
-                else precoLataSelecionada = dados.preco0_9L;
+            // Define o preço baseada no tamanho da lata
+            double precoLataSelecionada = 0.0;
+            if (volLataSelecionada == 20.0) precoLataSelecionada = dados.preco20L;
+            else if (volLataSelecionada == 18.0) precoLataSelecionada = dados.preco18L;
+            else if (volLataSelecionada == 3.6) precoLataSelecionada = dados.preco3_6L;
+            else precoLataSelecionada = dados.preco0_9L;
 
-            
             double custoFinal = latasNecessarias * precoLataSelecionada;
-            double precoPorLitro = precoLataSelecionada / volLataSelecionada ;
-              // Gera a sugestão inteligente (mistura de latas)
-                String Sugestao = margemDeRendimento(litrosNecessarios, dados);
+            double precoPorLitro = precoLataSelecionada / volLataSelecionada;
+            
+            // Gera a sugestão inteligente
+            String Sugestao = margemDeRendimento(litrosNecessarios, dados);
+
             // --- TROCA DE TELA ---
             TelaFinal finall = new TelaFinal();
-
-            // Define tamanho fixo para garantir que não abra minúscula
             finall.setSize(800, 600);
+            
+            // Passa os dados para a tela final
+            finall.atualizarResultados(areaTotal, litrosNecessarios, latasNecessarias, custoFinal, precoPorLitro, volLataSelecionada, Sugestao);
 
-            // Passa os dados
-            finall.atualizarResultados(areaTotal, litrosNecessarios, latasNecessarias, custoFinal,precoPorLitro, volLataSelecionada, Sugestao);
-
-            finall.setLocationRelativeTo(null); // Centraliza
+            finall.setLocationRelativeTo(null);
             finall.setVisible(true);
 
             this.dispose();
 
         } catch (NumberFormatException e) {
-            // Esse erro aparece se escrever letras ou deixar PAREDES vazias
-            javax.swing.JOptionPane.showMessageDialog(this, "Erro: Verifique se digitou apenas números nos campos obrigatórios!");
-            e.printStackTrace(); // Mostra o erro no console para ajudar a debugar
-
+            javax.swing.JOptionPane.showMessageDialog(this, "Erro: Verifique se digitou apenas números nos campos!");
+            e.printStackTrace();
         }
     }//GEN-LAST:event_CalcularActionPerformed
 
@@ -419,6 +446,40 @@ private DadosTinta obterDadosDaMarca() {
     private void volumeLata1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volumeLata1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_volumeLata1ActionPerformed
+
+    private void btnAdicionarParedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarParedeActionPerformed
+        try {
+        // 1. Pega os valores dos campos de texto
+        String altText = ParedeAltura.getText().replace(",", ".");
+        String largText = ParedeLargura.getText().replace(",", ".");
+
+        if (altText.isEmpty() || largText.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Preencha Altura e Largura da parede!");
+            return;
+        }
+
+        double alt = Double.parseDouble(altText);
+        double larg = Double.parseDouble(largText);
+
+        // 2. Calcula a área desta parede específica
+        double areaDestaParede = alt * larg;
+
+        // 3. Adiciona ao acumulador total
+        this.areaTotalParedesAcumulada += areaDestaParede;
+        this.contadorParedes++;
+
+        // 4. Atualiza o Label visual para o usuário saber que funcionou
+        lblTotalParedes.setText("Paredes: " + contadorParedes + " | Área: " + String.format("%.2f", this.areaTotalParedesAcumulada) + " m²");
+
+        // 5. Limpa os campos para a próxima parede
+        ParedeAltura.setText("");
+        ParedeLargura.setText("");
+        ParedeAltura.requestFocus(); // Volta o cursor para altura
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Digite apenas números válidos!");
+    }
+    }//GEN-LAST:event_btnAdicionarParedeActionPerformed
  
     
     private String margemDeRendimento (double litrosNecessarios, DadosTinta dados) {
@@ -493,6 +554,7 @@ private DadosTinta obterDadosDaMarca() {
     private javax.swing.JTextField ParedeLargura;
     private javax.swing.JTextField Teto_Larg;
     private javax.swing.JTextField Teto_compri;
+    private javax.swing.JButton btnAdicionarParede;
     private javax.swing.JComboBox<String> comboMarcas;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -506,6 +568,7 @@ private DadosTinta obterDadosDaMarca() {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblTotalParedes;
     private javax.swing.JLabel superficie;
     private javax.swing.JLabel titulo1;
     private javax.swing.JComboBox<String> volumeLata1;
