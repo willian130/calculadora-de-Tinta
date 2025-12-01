@@ -98,6 +98,7 @@ private DadosTinta obterDadosDaMarca() {
         volumeLata1 = new javax.swing.JComboBox<>();
         btnAdicionarParede = new javax.swing.JButton();
         lblTotalParedes = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -211,11 +212,11 @@ private DadosTinta obterDadosDaMarca() {
         });
         jPanel1.add(comboMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 230, 30));
 
-        jPanel2.setBackground(new java.awt.Color(250, 227, 198));
+        jPanel2.setBackground(new java.awt.Color(10, 79, 163));
 
-        titulo1.setBackground(new java.awt.Color(255, 156, 185));
+        titulo1.setBackground(new java.awt.Color(0, 0, 0));
         titulo1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        titulo1.setForeground(new java.awt.Color(225, 145, 164));
+        titulo1.setForeground(new java.awt.Color(255, 255, 255));
         titulo1.setText("Preencha os campos abaixo para calcular");
         titulo1.setMaximumSize(new java.awt.Dimension(600, 50));
         titulo1.setMinimumSize(new java.awt.Dimension(600, 32));
@@ -241,6 +242,11 @@ private DadosTinta obterDadosDaMarca() {
 
         lblTotalParedes.setText("Total Paredes: 0.00 m²");
         jPanel1.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 200, -1));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 780, 520));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -568,6 +574,7 @@ private DadosTinta obterDadosDaMarca() {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblTotalParedes;
     private javax.swing.JLabel superficie;
     private javax.swing.JLabel titulo1;
