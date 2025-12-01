@@ -17,10 +17,10 @@ public class TelaMenu extends javax.swing.JFrame {
         texto1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Margem
         texto1.setText("<html>"
                 
-                + "<font size=\"5\"><b>SOBRE A CALCULADORA de Tinta 4K:</b></Arial><b></b><br><br>"
+                + "<font size=\"5\"><b>SOBRE A CALCULADORA DE TINTA 4K:</b></Arial><b></b><br><br>"
                 + "A calculadora serve para ajudar qualquer pessoa a entender exatamente o quanto será pintado em um cômodo<br>"
-                + "Ela considera paredes, portas e janelas, calcula a área total de pintura e informa a <br>"
-                + "quantidade de tinta que será necessário com base no rendimento por galão. <br>"
+                + "Ela considera paredes, portas e janelas, calcula a área total de pintura e informa a quantidade<br>"
+                + "de tinta que será necessário com base no rendimento por galão. <br>"
                 + "No final, ela mostra tanto a área total pintada quanto o custo estimado da tinta."
                 + "</html>");
 
@@ -30,23 +30,23 @@ public class TelaMenu extends javax.swing.JFrame {
         texto2.setText
                    ("<html>"
                 + "<font size=\"5\"><b>Como Usar:</b></Arial><b></b><br>"
-                + "É simples, nos campos determinados você ira preencher da seguinte forma:<br>"
+                + "É simples, nos campos determinados você irá preencher da seguinte forma:<br>"
                 + "<br>"
-                + "<b>Paredes: </b> Você colocara tanto a altura dela quanto a sua largura. <br>"
-                + "caso não saiba veja o modelo da morta a onde você <br>"
-                + "comprou ou pega uma fita métrica e faça as medidas."
+                + "<b>Paredes: </b> Você colocará tanto a altura dela quanto a sua largura. <br>"
+                + "caso não saiba, veja o modelo da marca onde você <br>"
+                + "comprou ou pegue uma fita métrica e faça as medidas."
                 + "<br>"
-                + "<b>Teto:</b> O teto seguira do mesmo formato, onde você colocara a largura dele e o comprimento,"
-                + "e vale ressaltar que essa opção é opcional, onde você só precisara colocar se for pintar o teto,"
-                + "caso não vá, essa opção pode ser preenchida com 0."
+                + "<b>Teto:</b> O teto seguirá do mesmo formato, onde você colocará a largura dele e o comprimento,"
+                + " e vale ressaltar que essa opção é opcional, onde você só precisará colocar se for pintar o teto,"
+                + " caso não vá, essa opção pode ser preenchida com 0."
                 + "<br>"
-                + "<b>Área sem Pintar:</b> Esta opção é um pouco mais de sua escolha, aqui você ira colocar as"  
-                + "medidas da área a onde você não vai quere pintar, pode acabar sendo tanto"
-                + "porta quanto janela, caso não vá, essa opção pode ser preenchida com 0."
+                + "<b>Área sem Pintar:</b> Esta opção é um pouco mais de sua escolha, aqui você irá colocar as"  
+                + " medidas da área onde você não vai pintar, pode acabar sendo tanto"
+                + " portas quanto janelas, caso não vá, essa opção pode ser preenchida com 0."
                 + "<br>"
                 + "<b>Marcas: </b> As marcas disponíveis para ser selecionada, cada marca tem seu "
                 + "preço e rendimento diferentes, e ao lado a"
-                + "quantidade de litros que à ser selecionado."
+                + " quantidade de litros escolhido."
                 + "</html>");
     
        
@@ -87,10 +87,10 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/paint-bucket (1).png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 610, 763));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 0, 610, 850));
 
         tabela.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tabela.addTab("Sobre a claculadora", texto1);
+        tabela.addTab("Sobre a calculadora", texto1);
         tabela.addTab("Como usar", texto2);
 
         getContentPane().add(tabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 635, 555));

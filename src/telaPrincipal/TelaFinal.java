@@ -210,19 +210,19 @@ public class TelaFinal extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Salvar");
         jLabel6.setToolTipText("");
-        FUNDO.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 80, 80, 30));
+        FUNDO.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1340, 80, 80, 30));
 
-        baixar.setBackground(new java.awt.Color(0, 102, 102));
+        baixar.setBackground(new java.awt.Color(99, 145, 255));
         baixar.setForeground(new java.awt.Color(0, 51, 51));
         baixar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/salvamentoBlue.png"))); // NOI18N
-        baixar.setBorder(null);
+        baixar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         baixar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         baixar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         baixar.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         baixar.addActionListener(this::baixarActionPerformed);
-        FUNDO.add(baixar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 20, -1, -1));
+        FUNDO.add(baixar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1340, 10, -1, -1));
 
-        getContentPane().add(FUNDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 710));
+        getContentPane().add(FUNDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1590, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,18 +250,22 @@ public void atualizarResultados(double area, double litros, double latas, double
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jPanel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1ComponentHidden
+
     private void baixarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarActionPerformed
-       
+
         // O iText (na classe GeradorPDF) usará essas quebras de linha (\n) para formatar o PDF.
         String conteudo = "======================================\n\n" +
-                          
-                          jLabel4.getText() + "\n" +
-                          ExibirArea.getText() + "\n" +
-                          jLabel2.getText() + "\n" +
-                          jLabel5.getText() + "\n" +
-                          "--------------------------------------\n" +
-                          jLableC.getText().replace("<html>", "").replace("<br>", "\n").replace("</html>", "") +
-                          "\n\nGerado automaticamente.";
+
+        jLabel4.getText() + "\n" +
+        ExibirArea.getText() + "\n" +
+        jLabel2.getText() + "\n" +
+        jLabel5.getText() + "\n" +
+        "--------------------------------------\n" +
+        jLableC.getText().replace("<html>", "").replace("<br>", "\n").replace("</html>", "") +
+        "\n\nGerado automaticamente.";
 
         // 2. Abre a janela para escolher onde salvar
         javax.swing.JFileChooser arquivo = new javax.swing.JFileChooser();
@@ -269,7 +273,7 @@ public void atualizarResultados(double area, double litros, double latas, double
 
         // **************** MUDANÇA 1: Nome Padrão do Arquivo ****************
         // Sugere um nome padrão com a extensão .pdf
-        arquivo.setSelectedFile(new java.io.File("Orcamento_Pintura.pdf"));
+        arquivo.setSelectedFile(new java.io.File("Orçamento_Pintura.pdf"));
 
         int escolha = arquivo.showSaveDialog(this);
 
@@ -287,10 +291,10 @@ public void atualizarResultados(double area, double litros, double latas, double
             try {
                 // Chama o método estático que você criou na classe GeradorPDF
                 GeradorPDF.gerarRelatorio(caminhoCompleto, conteudo);
-                
+
                 // Exibe a mensagem de sucesso
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Relatório PDF salvo com sucesso em:\n" + caminhoCompleto, 
+                javax.swing.JOptionPane.showMessageDialog(this,
+                    "Relatório PDF salvo com sucesso em:\n" + caminhoCompleto,
                     "Sucesso", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
                 // (Opcional) Abre o arquivo PDF automaticamente para você ver
@@ -298,17 +302,13 @@ public void atualizarResultados(double area, double litros, double latas, double
 
             } catch (Exception e) {
                 // Trata exceções que possam ocorrer na geração do PDF
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Erro ao gerar o arquivo PDF: " + e.getMessage(), 
+                javax.swing.JOptionPane.showMessageDialog(this,
+                    "Erro ao gerar o arquivo PDF: " + e.getMessage(),
                     "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
             }
-        }     
+        }
     }//GEN-LAST:event_baixarActionPerformed
-
-    private void jPanel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentHidden
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel1ComponentHidden
 
     /**
      * @param args the command line arguments
