@@ -59,12 +59,12 @@ private DadosTinta obterDadosDaMarca() {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel() {
+        FUNDO = new javax.swing.JPanel() {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
                 super.paintComponent(g);
                 // CORREÇÃO: Adicionei "/Imagens/" antes do nome do arquivo
-                java.net.URL imgURL = getClass().getResource("/Imagens/pinkPrint (1).png");
+                java.net.URL imgURL = getClass().getResource("/Imagens/bluePrint.png");
 
                 if (imgURL != null) {
                     javax.swing.ImageIcon icon = new javax.swing.ImageIcon(imgURL);
@@ -98,7 +98,21 @@ private DadosTinta obterDadosDaMarca() {
         volumeLata1 = new javax.swing.JComboBox<>();
         btnAdicionarParede = new javax.swing.JButton();
         lblTotalParedes = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+                // CORREÇÃO: Adicionei "/Imagens/" antes do nome do arquivo
+                java.net.URL imgURL = getClass().getResource("/Imagens/bluePrint.jpg");
+
+                if (imgURL != null) {
+                    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(imgURL);
+                    g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);
+                } else {
+                    System.err.println("Imagem não encontrada: verifique o nome!");
+                }
+            }
+        };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -106,38 +120,38 @@ private DadosTinta obterDadosDaMarca() {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        FUNDO.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FUNDO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Área sem pintar");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
+        FUNDO.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Marcas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
+        FUNDO.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Teto");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
+        FUNDO.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
 
         jLabel11.setText("Quantidade de Litros");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, -1, -1));
+        FUNDO.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, -1, -1));
 
         jLabel3.setText("Altura (digite em metros)");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
+        FUNDO.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
 
         ParedeLargura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ParedeLarguraActionPerformed(evt);
             }
         });
-        jPanel1.add(ParedeLargura, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 230, 30));
+        FUNDO.add(ParedeLargura, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 230, 30));
 
         superficie.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         superficie.setText("Paredes");
         superficie.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        jPanel1.add(superficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
+        FUNDO.add(superficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
 
         Area_larg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Area_larg.addActionListener(new java.awt.event.ActionListener() {
@@ -145,17 +159,17 @@ private DadosTinta obterDadosDaMarca() {
                 Area_largActionPerformed(evt);
             }
         });
-        jPanel1.add(Area_larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 321, 230, 30));
+        FUNDO.add(Area_larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 321, 230, 30));
 
         jLabel9.setText("Altura");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
+        FUNDO.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
 
         Teto_compri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Teto_compriActionPerformed(evt);
             }
         });
-        jPanel1.add(Teto_compri, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 242, 230, 30));
+        FUNDO.add(Teto_compri, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 242, 230, 30));
 
         ParedeAltura.setToolTipText("");
         ParedeAltura.setActionCommand("<Not Set>");
@@ -167,7 +181,7 @@ private DadosTinta obterDadosDaMarca() {
                 ParedeAlturaActionPerformed(evt);
             }
         });
-        jPanel1.add(ParedeAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 230, 30));
+        FUNDO.add(ParedeAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 230, 30));
 
         Calcular.setText("Calcular");
         Calcular.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -176,33 +190,33 @@ private DadosTinta obterDadosDaMarca() {
                 CalcularActionPerformed(evt);
             }
         });
-        jPanel1.add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 110, 30));
+        FUNDO.add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 110, 30));
 
         Teto_Larg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Teto_LargActionPerformed(evt);
             }
         });
-        jPanel1.add(Teto_Larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 241, 230, 30));
+        FUNDO.add(Teto_Larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 241, 230, 30));
 
         jLabel4.setText("Largura");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, -1, -1));
+        FUNDO.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, -1, -1));
 
         jLabel7.setText("Largura(Opcional)");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, -1, -1));
+        FUNDO.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, -1, -1));
 
         jLabel6.setText("Comprimento(Opcional)");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, -1));
+        FUNDO.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, -1));
 
         jLabel10.setText("Largura");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, -1, -1));
+        FUNDO.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, -1, -1));
 
         Area_Alt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Area_AltActionPerformed(evt);
             }
         });
-        jPanel1.add(Area_Alt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 230, 30));
+        FUNDO.add(Area_Alt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 230, 30));
 
         comboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lumina Prime", "EcoViva", "AceleraCor" }));
         comboMarcas.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +224,7 @@ private DadosTinta obterDadosDaMarca() {
                 comboMarcasActionPerformed(evt);
             }
         });
-        jPanel1.add(comboMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 230, 30));
+        FUNDO.add(comboMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 230, 30));
 
         jPanel2.setBackground(new java.awt.Color(10, 79, 163));
 
@@ -222,7 +236,7 @@ private DadosTinta obterDadosDaMarca() {
         titulo1.setMinimumSize(new java.awt.Dimension(600, 32));
         jPanel2.add(titulo1);
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 660, 50));
+        FUNDO.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 660, 50));
 
         volumeLata1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 20L", "Lata 18L", "Lata 3,6L", "Lata 900ML" }));
         volumeLata1.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +244,7 @@ private DadosTinta obterDadosDaMarca() {
                 volumeLata1ActionPerformed(evt);
             }
         });
-        jPanel1.add(volumeLata1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 230, 30));
+        FUNDO.add(volumeLata1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 230, 30));
 
         btnAdicionarParede.setText("Adicionar Parede");
         btnAdicionarParede.addActionListener(new java.awt.event.ActionListener() {
@@ -238,21 +252,21 @@ private DadosTinta obterDadosDaMarca() {
                 btnAdicionarParedeActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdicionarParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, -1));
+        FUNDO.add(btnAdicionarParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, -1));
 
         lblTotalParedes.setText("Total Paredes: 0.00 m²");
-        jPanel1.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 200, -1));
+        FUNDO.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 200, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 780, 520));
+        FUNDO.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 780, 520));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        getContentPane().add(jPanel1, gridBagConstraints);
+        getContentPane().add(FUNDO, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void Area_AltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Area_AltActionPerformed
@@ -556,6 +570,7 @@ private DadosTinta obterDadosDaMarca() {
     private javax.swing.JTextField Area_Alt;
     private javax.swing.JTextField Area_larg;
     private javax.swing.JButton Calcular;
+    private javax.swing.JPanel FUNDO;
     private javax.swing.JTextField ParedeAltura;
     private javax.swing.JTextField ParedeLargura;
     private javax.swing.JTextField Teto_Larg;
@@ -572,7 +587,6 @@ private DadosTinta obterDadosDaMarca() {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblTotalParedes;

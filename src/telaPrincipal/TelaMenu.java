@@ -11,94 +11,93 @@ public class TelaMenu extends javax.swing.JFrame {
          this.setSize(800, 600); 
        this.setExtendedState(MAXIMIZED_BOTH);
        this.setLocationRelativeTo(null);
+       
+       
+       texto1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        texto1.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Margem
+        texto1.setText("<html>"
+                
+                + "<font size=\"5\"><b>SOBRE A CALCULADORA de Tinta 4K:</b></Arial><b></b><br><br>"
+                + "A calculadora serve para ajudar qualquer pessoa a entender exatamente o quanto será pintado em um cômodo<br>"
+                + "Ela considera paredes, portas e janelas, calcula a área total de pintura e informa a <br>"
+                + "quantidade de tinta que será necessário com base no rendimento por galão. <br>"
+                + "No final, ela mostra tanto a área total pintada quanto o custo estimado da tinta."
+                + "</html>");
+
+        // ABA 2: Sobre a calculadora (jLabel2)
+        texto2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        texto2.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Margem
+        texto2.setText
+                   ("<html>"
+                + "<font size=\"5\"><b>Como Usar:</b></Arial><b></b><br>"
+                + "É simples, nos campos determinados você ira preencher da seguinte forma:<br>"
+                + "<br>"
+                + "<b>Paredes: </b> Você colocara tanto a altura dela quanto a sua largura. <br>"
+                + "caso não saiba veja o modelo da morta a onde você <br>"
+                + "comprou ou pega uma fita métrica e faça as medidas."
+                + "<br>"
+                + "<b>Teto:</b> O teto seguira do mesmo formato, onde você colocara a largura dele e o comprimento,"
+                + "e vale ressaltar que essa opção é opcional, onde você só precisara colocar se for pintar o teto,"
+                + "caso não vá, essa opção pode ser preenchida com 0."
+                + "<br>"
+                + "<b>Área sem Pintar:</b> Esta opção é um pouco mais de sua escolha, aqui você ira colocar as"  
+                + "medidas da área a onde você não vai quere pintar, pode acabar sendo tanto"
+                + "porta quanto janela, caso não vá, essa opção pode ser preenchida com 0."
+                + "<br>"
+                + "<b>Marcas: </b> As marcas disponíveis para ser selecionada, cada marca tem seu "
+                + "preço e rendimento diferentes, e ao lado a"
+                + "quantidade de litros que à ser selecionado."
+                + "</html>");
+    
+       
+       
+       
+       
+       
+       
+       
+       
+       
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         comecar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        tabela = new javax.swing.JTabbedPane();
+        texto1 = new javax.swing.JLabel();
+        texto2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(10, 79, 163));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         comecar.setText("Calcular");
         comecar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         comecar.addActionListener(this::comecarActionPerformed);
+        jPanel1.add(comecar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 189, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/paint-bucket (1).png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comecar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE))
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(391, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(comecar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 0, 610, 763));
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 44;
-        gridBagConstraints.ipady = 177;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 12, 0, 0);
-        getContentPane().add(jPanel1, gridBagConstraints);
+        tabela.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tabela.addTab("Sobre a claculadora", texto1);
+        tabela.addTab("Como usar", texto2);
 
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel2.setText("Como usar a calculadora");
-        jTabbedPane1.addTab("?", jLabel2);
-
-        jLabel1.setText("Sobre a calculadora");
-        jTabbedPane1.addTab("!", jLabel1);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 500;
-        gridBagConstraints.ipady = 500;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(18, 6, 0, 0);
-        getContentPane().add(jTabbedPane1, gridBagConstraints);
+        getContentPane().add(tabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 635, 555));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel4.setText("Calculadora de Tinta");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 95;
-        gridBagConstraints.ipady = 3;
-        gridBagConstraints.insets = new java.awt.Insets(100, 70, 0, 0);
-        getContentPane().add(jLabel4, gridBagConstraints);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 559, 67));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,11 +133,11 @@ public class TelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton comecar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane tabela;
+    private javax.swing.JLabel texto1;
+    private javax.swing.JLabel texto2;
     // End of variables declaration//GEN-END:variables
 }

@@ -84,13 +84,43 @@ public class TelaFinal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        baixar = new javax.swing.JButton();
         ExibirArea = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLableC = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        FUNDO = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+                // CORREÇÃO: Adicionei "/Imagens/" antes do nome do arquivo
+                java.net.URL imgURL = getClass().getResource("/Imagens/bluePrint.png");
+
+                if (imgURL != null) {
+                    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(imgURL);
+                    g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);
+                } else {
+                    System.err.println("Imagem não encontrada: verifique o nome!");
+                }
+            }
+        };
+        jPanel3 = new javax.swing.JPanel() {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                super.paintComponent(g);
+                // CORREÇÃO: Adicionei "/Imagens/" antes do nome do arquivo
+                java.net.URL imgURL = getClass().getResource("/Imagens/bluePrint.jpg");
+
+                if (imgURL != null) {
+                    javax.swing.ImageIcon icon = new javax.swing.ImageIcon(imgURL);
+                    g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);
+                } else {
+                    System.err.println("Imagem não encontrada: verifique o nome!");
+                }
+            }
+        };
         jLabel6 = new javax.swing.JLabel();
+        baixar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -122,14 +152,14 @@ public class TelaFinal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(285, 285, 285)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(262, 262, 262)
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(250, 250, 250)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(294, 294, 294)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(286, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -144,15 +174,7 @@ public class TelaFinal extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 690, 200));
-
-        baixar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/folder_15381237 (2).png"))); // NOI18N
-        baixar.setBorder(null);
-        baixar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        baixar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        baixar.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        baixar.addActionListener(this::baixarActionPerformed);
-        getContentPane().add(baixar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 200, 690, 200));
 
         ExibirArea.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ExibirArea.setText("Para área informada de (variavel), a estimativa é de: ");
@@ -169,14 +191,38 @@ public class TelaFinal extends javax.swing.JFrame {
         jLableC.setBackground(new java.awt.Color(0, 0, 255));
         jLableC.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLableC.setText("preço");
-        getContentPane().add(jLableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 310, -1));
+        getContentPane().add(jLableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Valor por Litro;");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 475, -1, -1));
 
-        jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 70, -1, -1));
+        FUNDO.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FUNDO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        FUNDO.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 780, 520));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Salvar");
+        jLabel6.setToolTipText("");
+        FUNDO.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 80, 80, 30));
+
+        baixar.setBackground(new java.awt.Color(0, 102, 102));
+        baixar.setForeground(new java.awt.Color(0, 51, 51));
+        baixar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/salvamentoBlue.png"))); // NOI18N
+        baixar.setBorder(null);
+        baixar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        baixar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        baixar.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        baixar.addActionListener(this::baixarActionPerformed);
+        FUNDO.add(baixar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 20, -1, -1));
+
+        getContentPane().add(FUNDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1440, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,10 +249,6 @@ public void atualizarResultados(double area, double litros, double latas, double
         setLocationRelativeTo(null);
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jPanel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentHidden
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanel1ComponentHidden
 
     private void baixarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_baixarActionPerformed
        
@@ -264,6 +306,10 @@ public void atualizarResultados(double area, double litros, double latas, double
         }     
     }//GEN-LAST:event_baixarActionPerformed
 
+    private void jPanel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel1ComponentHidden
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +336,7 @@ public void atualizarResultados(double area, double litros, double latas, double
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ExibirArea;
+    private javax.swing.JPanel FUNDO;
     private javax.swing.JButton baixar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -300,5 +347,6 @@ public void atualizarResultados(double area, double litros, double latas, double
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLableC;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
