@@ -80,15 +80,6 @@ public class TelaFinal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        ExibirArea = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLableC = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         FUNDO = new javax.swing.JPanel() {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
@@ -103,7 +94,9 @@ public class TelaFinal extends javax.swing.JFrame {
                     System.err.println("Imagem não encontrada: verifique o nome!");
                 }
             }
-        };
+
+        }
+        ;
         jPanel3 = new javax.swing.JPanel() {
             @Override
             protected void paintComponent(java.awt.Graphics g) {
@@ -119,6 +112,15 @@ public class TelaFinal extends javax.swing.JFrame {
                 }
             }
         };
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ExibirArea = new javax.swing.JLabel();
+        jLableC = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         baixar = new javax.swing.JButton();
 
@@ -127,6 +129,14 @@ public class TelaFinal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        FUNDO.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        FUNDO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel1.setBackground(new java.awt.Color(10, 79, 163));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -134,76 +144,45 @@ public class TelaFinal extends javax.swing.JFrame {
                 jPanel1ComponentHidden(evt);
             }
         });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Recalcular");
         jButton1.addActionListener(this::jButton1ActionPerformed);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 150, 150, 33));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fill (1).png"))); // NOI18N
         jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 18, 62, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Lata selecionada");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 84, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(294, 294, 294)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(286, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 200, 690, 200));
-
-        ExibirArea.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ExibirArea.setText("Para área informada de (variavel), a estimativa é de: ");
-        getContentPane().add(ExibirArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 490, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("(variavel) litros");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 310, -1));
+        jPanel3.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 690, 200));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("para 2 demãos");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 350, -1));
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 350, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("(variavel) litros");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 310, -1));
+
+        ExibirArea.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ExibirArea.setText("Para área informada de (variavel), a estimativa é de: ");
+        jPanel3.add(ExibirArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 490, -1));
 
         jLableC.setBackground(new java.awt.Color(0, 0, 255));
         jLableC.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLableC.setText("preço");
-        getContentPane().add(jLableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 450, 310, -1));
+        jPanel3.add(jLableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 310, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Valor por Litro;");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 475, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, -1, -1));
 
-        FUNDO.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        FUNDO.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        FUNDO.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 780, 520));
+        FUNDO.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 780, 520));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -226,16 +205,18 @@ public class TelaFinal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void atualizarResultados(double area, double litros, double latas, double custoFinal, double precoPorLitro,double volLata,String sugestao) {
+public void atualizarResultados(double area, double litros, double latas, double custoFinal, double precoPorLitro,double volLata,String sugestao,String marcaTexto) {
     // Verifica se as variáveis (ExibirArea, etc) estão com o nome certo no seu Design
     ExibirArea.setText("Área Total: " + String.format("%.2f", area) + " m²");
-    jLabel2.setText("Litros Necessários: " + String.format("%.2f", litros) + " L");
+    jLabel2.setText( "Litros Necessários: " + String.format("%.2f", litros) + " L" + " para duas demãos");
     jLabel5.setText("Latas Necessárias: " + String.format("%.0f", latas)); // Usando jLabel5 para latas
     jLableC.setText("Custo Estimado: R$ " + String.format("%.2f", custoFinal));
     jLabel3.setText("Custo Estimado por Litro: R$ " + String.format("%.2f", precoPorLitro));
-    jLabel4.setText("Lata selecionada: " + volLata + "L");
-    //dica.setText("Lata selecionada: " + sugestao);
-    
+    jLabel4.setText("<html>Marca: " + marcaTexto
+                        + "<br>"
+                        + "Lata selecionada: " + volLata + "L"
+                        +"<html>");
+       
 }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

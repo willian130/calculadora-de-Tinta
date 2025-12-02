@@ -73,6 +73,7 @@ private DadosTinta obterDadosDaMarca() {
                     System.err.println("Imagem não encontrada: verifique o nome!");
                 }
             }
+
         };
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -125,33 +126,33 @@ private DadosTinta obterDadosDaMarca() {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("Área sem pintar");
-        FUNDO.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
+        FUNDO.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Marcas");
-        FUNDO.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 370, -1, -1));
+        FUNDO.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Teto");
-        FUNDO.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, -1, -1));
+        FUNDO.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, -1, -1));
 
         jLabel11.setText("Quantidade de Litros");
-        FUNDO.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 370, -1, -1));
+        FUNDO.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, -1, -1));
 
         jLabel3.setText("Altura (digite em metros)");
-        FUNDO.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, -1, -1));
+        FUNDO.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, -1, -1));
 
         ParedeLargura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ParedeLarguraActionPerformed(evt);
             }
         });
-        FUNDO.add(ParedeLargura, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 160, 230, 30));
+        FUNDO.add(ParedeLargura, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 240, 230, 30));
 
         superficie.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         superficie.setText("Paredes");
         superficie.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        FUNDO.add(superficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
+        FUNDO.add(superficie, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
 
         Area_larg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Area_larg.addActionListener(new java.awt.event.ActionListener() {
@@ -159,17 +160,17 @@ private DadosTinta obterDadosDaMarca() {
                 Area_largActionPerformed(evt);
             }
         });
-        FUNDO.add(Area_larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 321, 230, 30));
+        FUNDO.add(Area_larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 400, 230, 30));
 
-        jLabel9.setText("Altura");
-        FUNDO.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 300, -1, -1));
+        jLabel9.setText("Altura(Opcional)");
+        FUNDO.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, -1, -1));
 
         Teto_compri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Teto_compriActionPerformed(evt);
             }
         });
-        FUNDO.add(Teto_compri, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 242, 230, 30));
+        FUNDO.add(Teto_compri, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 230, 30));
 
         ParedeAltura.setToolTipText("");
         ParedeAltura.setActionCommand("<Not Set>");
@@ -181,7 +182,7 @@ private DadosTinta obterDadosDaMarca() {
                 ParedeAlturaActionPerformed(evt);
             }
         });
-        FUNDO.add(ParedeAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 230, 30));
+        FUNDO.add(ParedeAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 230, 30));
 
         Calcular.setText("Calcular");
         Calcular.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -190,33 +191,33 @@ private DadosTinta obterDadosDaMarca() {
                 CalcularActionPerformed(evt);
             }
         });
-        FUNDO.add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 110, 30));
+        FUNDO.add(Calcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 580, 110, 30));
 
         Teto_Larg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Teto_LargActionPerformed(evt);
             }
         });
-        FUNDO.add(Teto_Larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 241, 230, 30));
+        FUNDO.add(Teto_Larg, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 320, 230, 30));
 
         jLabel4.setText("Largura");
-        FUNDO.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, -1, -1));
+        FUNDO.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, -1, -1));
 
         jLabel7.setText("Largura(Opcional)");
-        FUNDO.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, -1, -1));
+        FUNDO.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 300, -1, -1));
 
         jLabel6.setText("Comprimento(Opcional)");
-        FUNDO.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, -1, -1));
+        FUNDO.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, -1, -1));
 
-        jLabel10.setText("Largura");
-        FUNDO.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 300, -1, -1));
+        jLabel10.setText("Largura(Opcional)");
+        FUNDO.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 380, -1, -1));
 
         Area_Alt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Area_AltActionPerformed(evt);
             }
         });
-        FUNDO.add(Area_Alt, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 230, 30));
+        FUNDO.add(Area_Alt, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 230, 30));
 
         comboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lumina Prime", "EcoViva", "AceleraCor" }));
         comboMarcas.addActionListener(new java.awt.event.ActionListener() {
@@ -224,7 +225,7 @@ private DadosTinta obterDadosDaMarca() {
                 comboMarcasActionPerformed(evt);
             }
         });
-        FUNDO.add(comboMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, 230, 30));
+        FUNDO.add(comboMarcas, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 470, 230, 30));
 
         jPanel2.setBackground(new java.awt.Color(10, 79, 163));
 
@@ -236,7 +237,7 @@ private DadosTinta obterDadosDaMarca() {
         titulo1.setMinimumSize(new java.awt.Dimension(600, 32));
         jPanel2.add(titulo1);
 
-        FUNDO.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 660, 50));
+        FUNDO.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 660, 50));
 
         volumeLata1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lata 20L", "Lata 18L", "Lata 3,6L", "Lata 900ML" }));
         volumeLata1.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +245,7 @@ private DadosTinta obterDadosDaMarca() {
                 volumeLata1ActionPerformed(evt);
             }
         });
-        FUNDO.add(volumeLata1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 390, 230, 30));
+        FUNDO.add(volumeLata1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 470, 230, 30));
 
         btnAdicionarParede.setText("Adicionar Parede");
         btnAdicionarParede.addActionListener(new java.awt.event.ActionListener() {
@@ -252,15 +253,15 @@ private DadosTinta obterDadosDaMarca() {
                 btnAdicionarParedeActionPerformed(evt);
             }
         });
-        FUNDO.add(btnAdicionarParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, -1));
+        FUNDO.add(btnAdicionarParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, -1, -1));
 
         lblTotalParedes.setText("Total Paredes: 0.00 m²");
-        FUNDO.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 450, 200, -1));
+        FUNDO.add(lblTotalParedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 530, 200, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        FUNDO.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 780, 520));
+        FUNDO.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 780, 520));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -350,9 +351,19 @@ private DadosTinta obterDadosDaMarca() {
             if (areaTotal < 0) {
                 areaTotal = 0;
             }
+      
+                    // --- COLE AQUI (LOGO NO COMEÇO DO TRY) ---
+                    String marcaTexto = "";
+                    try {
+                        marcaTexto = comboMarcas.getSelectedItem().toString();
+                    } catch (Exception e) {
+                        marcaTexto = "Padrão";
+                    }
 
+            
             DadosTinta dados = obterDadosDaMarca();
            
+            
             // Cálculo de litros (considerando 2 demãos, conforme seu código original)
             double litrosNecessarios = (areaTotal / dados.rendimento) * 2;
            
@@ -386,7 +397,7 @@ private DadosTinta obterDadosDaMarca() {
             finall.setSize(800, 600);
             
             // Passa os dados para a tela final
-            finall.atualizarResultados(areaTotal, litrosNecessarios, latasNecessarias, custoFinal, precoPorLitro, volLataSelecionada, Sugestao);
+            finall.atualizarResultados(areaTotal, litrosNecessarios, latasNecessarias, custoFinal, precoPorLitro, volLataSelecionada, Sugestao ,marcaTexto);
 
             finall.setLocationRelativeTo(null);
             finall.setVisible(true);
